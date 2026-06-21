@@ -55,9 +55,7 @@ The Source Extractor tool is normally applied to astronomical sky images (FITS);
 ### Search keywords (Wikidata) (multi-select, optional)
 
 - light pollution
-- remote sensing
 - protected area
-- source extraction
 
 ### Search discipline (Wikidata) (search, optional)
 

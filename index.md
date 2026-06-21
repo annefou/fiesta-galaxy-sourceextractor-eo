@@ -36,7 +36,16 @@ docker run --rm ghcr.io/annefou/fiesta-galaxy-sourceextractor-eo:latest
 
 ## Nanopublication chain
 
-The published chain is listed in [`nanopubs/PUBLISHED.md`](nanopubs/PUBLISHED.md). Each step links to its viewer URL on the Science Live platform.
+The FORRT chain for this work is **published** on the Science Live platform (full registry in [`nanopubs/PUBLISHED.md`](nanopubs/PUBLISHED.md)):
+
+1. **PCC question** — [RAEDNajh…](https://w3id.org/sciencelive/np/RAEDNajh8Hz_fZbBRgOACKDxWrQYFfDYRks8-xxMEfKt4)
+2. **AIDA sentence** — [RAzhINAb…](https://w3id.org/sciencelive/np/RAzhINAbh6Mdx4UojSiL1Wa4DHWf1RGiOeHXmOwVQLwhw)
+3. **FORRT Claim** — [RA2fQHXq…](https://w3id.org/sciencelive/np/RA2fQHXqmUHhYm46lrCjeXBQbX-h5uFBWo479kkgG5yO8)
+4. **Replication Study** — [RAyA6pt4…](https://w3id.org/sciencelive/np/RAyA6pt4EhMD7hZBXAwLJtBjsLYaYZQsoafauxS5BXjWw)
+5. **Replication Outcome** — [RA7zowzp…](https://w3id.org/sciencelive/np/RA7zowzpxWmmoRaFkRtc6xLUf395EYHMi0QwYAuQKtBAw)
+6. **CiTO Citation** — [RAHqfGVv…](https://w3id.org/sciencelive/np/RAHqfGVvNBhwPzjKGWjr1GS-63nziwc1Jqt0cm9EEMgJE)
+
+*(Research Software nanopub: pending publication.)*
 
 ## Citation
 

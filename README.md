@@ -102,17 +102,20 @@ This template bakes in conventions that took multiple replications to discover. 
 - **Layered AI guidance** — `CLAUDE.md` (universal) + `DOMAIN.md` (swappable per field) + `USER_PREFERENCES.md` (per-user). See [`docs/ai-portability.md`](docs/ai-portability.md) for non-Claude AI tools.
 - **Sandbox by default** — `.claude/settings.json` denies file ops outside the repo, so a fresh AI session can't accidentally read `~/.ssh/` or write to `/etc/`.
 
-## The six FORRT chain steps
+## FORRT nanopublication chain — published
 
-A complete FORRT chain has six steps published on [platform.sciencelive4all.org](https://platform.sciencelive4all.org):
+This work's FORRT chain is **published** on [platform.sciencelive4all.org](https://platform.sciencelive4all.org) (question-rooted, descriptive: PCC → AIDA → Claim → Study → Outcome → CiTO). Full registry in [`nanopubs/PUBLISHED.md`](nanopubs/PUBLISHED.md):
 
-```
-Quote-with-comment  →  AIDA  →  FORRT Claim  →  Replication Study  →  Replication Outcome  →  CiTO Citation
-```
+| Step | Nanopub |
+|---|---|
+| PCC question | [RAEDNajh…](https://w3id.org/sciencelive/np/RAEDNajh8Hz_fZbBRgOACKDxWrQYFfDYRks8-xxMEfKt4) |
+| AIDA sentence | [RAzhINAb…](https://w3id.org/sciencelive/np/RAzhINAbh6Mdx4UojSiL1Wa4DHWf1RGiOeHXmOwVQLwhw) |
+| FORRT Claim | [RA2fQHXq…](https://w3id.org/sciencelive/np/RA2fQHXqmUHhYm46lrCjeXBQbX-h5uFBWo479kkgG5yO8) |
+| Replication Study | [RAyA6pt4…](https://w3id.org/sciencelive/np/RAyA6pt4EhMD7hZBXAwLJtBjsLYaYZQsoafauxS5BXjWw) |
+| Replication Outcome | [RA7zowzp…](https://w3id.org/sciencelive/np/RA7zowzpxWmmoRaFkRtc6xLUf395EYHMi0QwYAuQKtBAw) |
+| CiTO Citation | [RAHqfGVv…](https://w3id.org/sciencelive/np/RAHqfGVvNBhwPzjKGWjr1GS-63nziwc1Jqt0cm9EEMgJE) |
 
-(For question-rooted chains with no upstream paper, replace step 1 with PICO or PCC. See [`docs/chain-decision-tree.md`](docs/chain-decision-tree.md).)
-
-Drafts live in [`nanopubs/drafts/`](nanopubs/drafts/) field-by-field. Published URIs go into [`nanopubs/PUBLISHED.md`](nanopubs/PUBLISHED.md).
+The Research Software nanopub (`nanopubs/drafts/07_research_software.md`) is pending publication.
 
 Optional further layers:
 
