@@ -58,9 +58,21 @@ jobs:
             pixi run jupytext --to notebook "$nb"
           done
 
+      # NASA Earthdata login for Black Marble (notebook 01) — repo secret
+      # EARTHDATA_NETRC_BASE64 (base64 of ~/.netrc with the urs.earthdata line).
+      - name: Set up NASA Earthdata credentials
+        if: steps.guard.outputs.ready == 'true'
+        env:
+          NETRC_B64: ${{ secrets.EARTHDATA_NETRC_BASE64 }}
+        run: |
+          umask 077
+          printf '%s' "$NETRC_B64" | base64 -d > "$HOME/.netrc"
+
       # Glob, not a hard-coded list — new notebooks are picked up automatically.
       - name: Execute notebooks
         if: steps.guard.outputs.ready == 'true'
+        env:
+          FIESTA_ENGINE: local   # no Galaxy key in CI -> same-library sep fallback
         run: |
           for nb in notebooks/*.ipynb; do
             echo "::group::Executing $nb"

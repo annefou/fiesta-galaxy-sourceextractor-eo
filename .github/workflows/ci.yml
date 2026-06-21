@@ -56,9 +56,22 @@ jobs:
       #     path: data/raw
       #     key: input-data-v1
 
+      # NASA Earthdata login for Black Marble (notebook 01). Add the repo secret
+      # EARTHDATA_NETRC_BASE64 = base64 of a ~/.netrc with:
+      #   machine urs.earthdata.nasa.gov login <user> password <pass>
+      - name: Set up NASA Earthdata credentials
+        if: steps.guard.outputs.ready == 'true'
+        env:
+          NETRC_B64: ${{ secrets.EARTHDATA_NETRC_BASE64 }}
+        run: |
+          umask 077
+          printf '%s' "$NETRC_B64" | base64 -d > "$HOME/.netrc"
+
       - name: Run pipeline
         if: steps.guard.outputs.ready == 'true'
-        run: pixi run snakemake --cores 1
+        env:
+          FIESTA_ENGINE: local   # no Galaxy key in CI -> same-library sep fallback
+        run: pixi run snakemake --cores 1 --forceall
 
       - name: Upload results
         if: always() && steps.guard.outputs.ready == 'true'
