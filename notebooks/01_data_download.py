@@ -32,6 +32,7 @@
 
 # %%
 import json
+import time
 from pathlib import Path
 
 import numpy as np
@@ -40,6 +41,18 @@ import xarray as xr
 import rioxarray  # noqa: F401
 import geopandas as gpd
 import earthaccess
+
+
+def retry(fn, tries=5, delay=10):
+    """NASA URS / LAADS occasionally hiccup — retry network calls with backoff."""
+    for i in range(tries):
+        try:
+            return fn()
+        except Exception as e:  # noqa: BLE001 — transient network/auth errors
+            if i == tries - 1:
+                raise
+            print(f"    retry {i + 1}/{tries} after: {str(e)[:80]}")
+            time.sleep(delay * (i + 1))
 
 RAW = Path("../data/raw")
 RAW.mkdir(parents=True, exist_ok=True)
@@ -56,11 +69,14 @@ nl_tif = RAW / "po_delta_nightlights.tif"
 if nl_tif.exists():
     print("night lights: cached")
 else:
-    earthaccess.login(strategy="netrc")
-    res = earthaccess.search_data(short_name="VNP46A4", bounding_box=BBOX,
-                                  temporal=(f"{YEAR}-01-01", f"{YEAR}-12-31"))
-    g = next(x for x in res if "h19v04" in x.data_links()[0])
-    fn = Path(earthaccess.download(g, str(RAW))[0])
+    def _fetch():
+        earthaccess.login(strategy="netrc")
+        res = earthaccess.search_data(short_name="VNP46A4", bounding_box=BBOX,
+                                      temporal=(f"{YEAR}-01-01", f"{YEAR}-12-31"))
+        g = next(x for x in res if "h19v04" in x.data_links()[0])
+        return Path(earthaccess.download(g, str(RAW))[0])
+
+    fn = retry(_fetch)
     with h5py.File(fn, "r") as h:
         p = []
         h.visititems(lambda n, o: p.append(n) if n.endswith(DATASET) else None)
@@ -89,9 +105,8 @@ else:
     params = {"geometry": ",".join(map(str, BBOX)), "geometryType": "esriGeometryEnvelope",
               "inSR": "4326", "spatialRel": "esriSpatialRelIntersects",
               "outFields": "SITECODE,SITENAME,SITETYPE", "outSR": "4326", "f": "geojson"}
-    gpd.read_file(  # GeoJSON query result read directly by geopandas/pyogrio
-        base + "?" + "&".join(f"{k}={v}" for k, v in params.items())
-    ).to_file(n2k, driver="GeoJSON")
+    url = base + "?" + "&".join(f"{k}={v}" for k, v in params.items())
+    retry(lambda: gpd.read_file(url).to_file(n2k, driver="GeoJSON"))
     print("wrote", n2k.name)
 
 # %% [markdown]

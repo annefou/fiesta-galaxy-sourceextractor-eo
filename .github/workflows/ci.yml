@@ -59,6 +59,12 @@ jobs:
       # NASA Earthdata login for Black Marble (notebook 01). Add the repo secret
       # EARTHDATA_NETRC_BASE64 = base64 of a ~/.netrc with:
       #   machine urs.earthdata.nasa.gov login <user> password <pass>
+      # GitHub runners resolve AAAA but have no IPv6 egress -> "Network is
+      # unreachable" reaching NASA URS. Prefer IPv4 at the glibc resolver level.
+      - name: Prefer IPv4
+        if: steps.guard.outputs.ready == 'true'
+        run: echo 'precedence ::ffff:0:0/96  100' | sudo tee -a /etc/gai.conf
+
       - name: Set up NASA Earthdata credentials
         if: steps.guard.outputs.ready == 'true'
         env:
