@@ -139,3 +139,41 @@ for f, box in [("fiesta.png", [0.07, 0.005, 0.10, 0.105]),
 fig.savefig(FIGS / "main_result.png", dpi=150, facecolor="white", bbox_inches="tight")
 plt.show()
 print("wrote figures/main_result.png")
+
+# %% [markdown]
+# ## What we found
+#
+# **1. The cross-discipline transfer works.** An astronomy source-detection tool —
+# Source Extractor (SExtractor / SEP), built to find stars and galaxies — run
+# *unchanged* through Galaxy on a VIIRS night-lights image, detected and cataloged
+# **453 lit settlements** across the Po Valley. It produced exactly the outputs it
+# makes for the sky (a source catalog with position, brightness and size, plus a
+# segmentation map), only the input image came from a different discipline. No
+# retraining, no code change. Lit settlements are compact bright sources on a dark
+# background — morphologically like stars — so the tool's background estimation,
+# thresholding and *deblending* apply directly (deblending separates adjacent towns
+# that simple brightness thresholding would merge into one blob).
+#
+# **2. Light is pressing on the Po Delta refuge.** Overlaying the catalog and the
+# night-lights field on Natura 2000 turns the astronomy output into a
+# biodiversity-impact metric. The Po Delta — a Ramsar / Natura 2000 wetland and a
+# key migratory-bird site — is still a relative **dark refuge** (mean night radiance
+# **0.96** vs **4.11** region-wide), but artificial light already covers about
+# **18.5 %** of its area, and **145 detected settlements lie within ~10 km** of it.
+# Artificial light at night is a documented stressor for the nocturnal birds,
+# insects and bats the wetland supports, so this is a measurable encroachment.
+#
+# **3. Honest caveats.** This is **one scene, one region, one annual composite
+# (2021)** — a snapshot, not a trend. Night-lights radiance is a *proxy* for human
+# presence, not a direct biodiversity measurement, and "lit" here is a simple
+# 1 nW·cm⁻²·sr⁻¹ threshold. In the most intensely lit parts of the Po plain the
+# background is no longer dark, so detections there are less clean — the method is
+# happiest exactly where refuges meet cities, like the Po Delta edge. The Galaxy and
+# local `sep` paths agree (453 settlements both ways), which confirms
+# *reproducibility* — but both are the same algorithm, so that is consistency, not
+# independent validation.
+#
+# **Takeaway.** A FAIR, well-described Galaxy tool from one discipline (astronomy)
+# can be picked up and do genuinely useful work in another (Earth observation /
+# biodiversity), because the metadata travels with it — the same point as the
+# [BioImage.IO companion example](https://github.com/annefou/fiesta-galaxy-bioimageio-eo).
