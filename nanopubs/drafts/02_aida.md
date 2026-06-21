@@ -8,50 +8,38 @@
 
 ### AIDA sentence (textarea, required)
 
-Atomic, Independent, Declarative, Absolute. One empirical finding. Must end with a full stop.
-
-> _If your draft AIDA contains "and" linking two distinct findings, split into two AIDA nanopubs._
+Atomic, Independent, Declarative, Absolute. One empirical finding. Ends with a full stop.
 
 ```
-
+Artificial night-time light is present over approximately 18 percent of the Po Delta Natura 2000 protected area.
 ```
 
 ### Select related topics/tags (dropdown, optional)
 
-Predefined topic vocabulary — list the labels you intend to pick from the dropdown.
+Intended labels (pick from the platform vocabulary if present):
 
 ```
-
+light pollution; remote sensing; protected areas
 ```
 
 ### Relates to this nanopublication (text input, required)
 
-URI of the nanopub the AIDA derives from.
-
-- For paper-rooted chains: the Quote-with-comment URI (from step 01).
-- For question-rooted chains: the PICO or PCC URI (from step 01).
-
-Pull the URI from `nanopubs/PUBLISHED.md`.
+URI of the PCC question published in step 01.
 
 ```
-
+<paste PCC URI from PUBLISHED.md step 01 after publishing>
 ```
 
 ### Supported by datasets (repeatable group, optional)
 
-DOIs/URLs of datasets that ground the AIDA claim.
-
-- _DOI 1: ___
-- _DOI 2: ___
+- NASA Black Marble VNP46A4 (VIIRS night lights): https://ladsweb.modaps.eosdis.nasa.gov/missions-and-measurements/products/VNP46A4/
+- Natura 2000 (EU protected areas, EEA): https://www.eea.europa.eu/en/datahub/datahubitem-view/6fc8ad2d-195d-40f4-bdec-576e7d1268e4
 
 ### Supported by other publications (repeatable group, optional)
 
-DOIs/URLs of publications that support the AIDA claim — e.g. peer-reviewed methods papers, or the original paper if not already cited via the Quote.
+- SEP: Source Extraction and Photometry (Barbary 2016): https://doi.org/10.21105/joss.00058
 
-- _DOI 1: ___
-- _DOI 2: ___
-
-> **Known platform bug (2026-04-26):** if both *Supported by datasets* AND *Supported by other publications* are populated and publishing fails, fall back to publishing this AIDA via Nanodash. The URI namespace becomes `https://w3id.org/np/...` (still valid and citable).
+> The earlier platform bug with both groups populated is fixed (2026-06-21).
 
 ## Publication note
 

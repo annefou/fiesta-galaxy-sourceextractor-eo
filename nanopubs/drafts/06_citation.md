@@ -8,30 +8,22 @@
 
 ### Identifier for the citing creative work (text input, required)
 
-URI of the Outcome published in step 05. Pull from `nanopubs/PUBLISHED.md`.
+URI of the Outcome published in step 05.
 
 ```
-
+<paste Outcome URI from PUBLISHED.md step 05 after publishing>
 ```
 
 ### List citations (repeatable group, required ≥1)
 
-#### Citation 1 — back to the original paper
+Question-rooted, descriptive chain (no prior paper to confirm/dispute), so the citations credit the reused method and the data sources.
+
+#### Citation 1 — the reused method (Source Extractor / SEP)
 
 ##### Citation Type (dropdown)
 
-Choose based on the Outcome's validation status:
-
-- Validated → `confirms`
-- PartiallySupported → `qualifies`
-- Contradicted → `disputes`
-
-For question-rooted chains where there is no original paper to confirm/dispute, use `usesMethodIn` or `citesAsAuthority` for the methodology paper(s).
-
-> **Note:** `replicates` is NOT in the Science Live dropdown (despite existing in upstream CiTO). When citing a notebook/tutorial that was directly reused, use **`credits`** instead.
-
 ```
-
+credits
 ```
 
 ##### DOI or other URL of the cited work (text input)
@@ -40,17 +32,34 @@ For question-rooted chains where there is no original paper to confirm/dispute, 
 https://doi.org/10.21105/joss.00058
 ```
 
-#### Additional citations (optional)
+#### Citation 2 — night-lights data source
 
-If the Outcome cites methods papers, related replications, or upstream tools, add them here.
+##### Citation Type (dropdown)
 
-- _Type: ___ → URL: ___
+```
+citesAsDataSource
+```
+
+##### DOI or other URL of the cited work (text input)
+
+```
+https://ladsweb.modaps.eosdis.nasa.gov/missions-and-measurements/products/VNP46A4/
+```
+
+#### Citation 3 — protected-area data source
+
+##### Citation Type (dropdown)
+
+```
+citesAsDataSource
+```
+
+##### DOI or other URL of the cited work (text input)
+
+```
+https://www.eea.europa.eu/en/datahub/datahubitem-view/6fc8ad2d-195d-40f4-bdec-576e7d1268e4
+```
 
 ## Publication note
 
-After publishing, paste the resulting URI into `nanopubs/PUBLISHED.md` step 06.
-
-This completes the six-step FORRT chain. Optional next layers:
-
-- **Research Software** (`drafts/07_research_software.md`) — if the repo *produces* a reusable software artefact.
-- **Research Synthesis** (`drafts/08_synthesis.md`) — if this chain is one of several testing facets of a shared property.
+After publishing, paste the resulting URI into `nanopubs/PUBLISHED.md` step 06. This completes the six-step chain. The optional Research Software nanopub is in `drafts/07_research_software.md`.

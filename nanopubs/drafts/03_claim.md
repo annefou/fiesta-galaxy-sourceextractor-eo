@@ -8,48 +8,44 @@
 
 ### Short URI suffix as claim ID (text input, required)
 
-Slug becomes part of the nanopub URI. Use kebab-case.
-
 ```
-
+po-delta-light-intrusion
 ```
 
 ### Label of the claim (text input, required)
 
-A descriptive title (not a sentence). Used for searches/discovery.
-
 ```
-
+Light-pollution intrusion on the Po Delta protected area
 ```
 
 ### Search for an AIDA sentence (search/select, required)
 
-URI of the AIDA published in step 02. Pull from `nanopubs/PUBLISHED.md`.
-
-> _If the AIDA was published via Nanodash (`w3id.org/np/...` namespace), the platform's search may not find it — paste the URI manually._
+URI of the AIDA published in step 02.
 
 ```
-
+<paste AIDA URI from PUBLISHED.md step 02 after publishing>
 ```
 
 ### Type of FORRT claim (dropdown, required)
 
-Pick one. See `docs/claim-type-vocabulary.md` for the seven options and how to choose.
+See `docs/claim-type-vocabulary.md`.
 
 - [ ] computational performance
 - [ ] scalability
 - [ ] data quality
 - [ ] data governance
-- [ ] descriptive pattern
+- [x] descriptive pattern
 - [ ] model performance
 - [ ] statistical significance
 
+*Rationale: the claim asserts an observed empirical fact about the world — the extent of artificial light over a protected area — which is a `descriptive pattern` (the source-extraction tool is the instrument; the pattern is the claim).*
+
 ### Source URI (text input, optional)
 
-Full URL form: `https://doi.org/...` (NOT bare DOI).
+Full URL form.
 
 ```
-https://doi.org/10.21105/joss.00058
+https://github.com/annefou/fiesta-galaxy-sourceextractor-eo
 ```
 
 ## Publication note

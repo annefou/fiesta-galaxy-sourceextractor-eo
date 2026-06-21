@@ -1,8 +1,8 @@
-# 07 — Research Software (optional)
+# 07 — Research Software (optional layer)
 
 > Run the pre-flight checklist in `docs/forrt-form-fields.md` § Pre-flight checklist before drafting.
 >
-> **Scope check:** Research Software nanopubs describe **reusable software artefacts** — tools people would `pip install` or `git clone` to use in their own work. They do NOT describe one-off demo / reproduction repos. If your repo is a reproduction of someone else's paper, the reusable artefact is the *upstream library* it uses (e.g. `foscat`, `planktonclas`), not your reproduction repo. Author the Research Software nanopub for the upstream tool, not the demo. See `CLAUDE.md` § Layered architecture: FORRT vs Research Software.
+> **Scope note:** the reusable artefact is the **parameterised Galaxy night-lights → settlements → biodiversity-overlay pipeline plus its BioBlend driver** (`scripts/source_extractor.py` + notebooks) — others can `git clone` it and point the same astronomy Source Extractor workflow at their own region / night-lights scene / protected-area layer. The upstream tool (SEP) and the Galaxy tool are credited separately at the CiTO step.
 
 **Form heading:** *"Research Software — Describe research software with metadata including repository, supporting publications, and related resources."*
 
@@ -10,18 +10,16 @@
 
 ### URI of published software (text input, required)
 
-Zenodo concept DOI URL when available, or a GitHub URL. Full URL form.
+Zenodo concept DOI (minted at the v0.1.0 release).
 
 ```
-{{ZENODO_DOI}}
+https://doi.org/10.5281/zenodo.20784962
 ```
 
 ### Software Title (text input, required)
 
-The full name or title of the software.
-
 ```
-
+FIESTA — Galaxy Source-Extractor pipeline for night-lights settlement detection and light-pollution biodiversity overlay
 ```
 
 ### Repository URL (text input, required)
@@ -32,10 +30,10 @@ https://github.com/annefou/fiesta-galaxy-sourceextractor-eo
 
 ### Research Project (text input, optional)
 
-URI of the FORRT Claim or PCC question this software is associated with — pull from `nanopubs/PUBLISHED.md`. This is the back-link to the FORRT chain.
+Back-link to the FORRT Claim at the head of the chain.
 
 ```
-
+<paste Claim URI from PUBLISHED.md step 03 after publishing>
 ```
 
 ### License (text input, optional)
@@ -46,17 +44,13 @@ https://spdx.org/licenses/MIT.html
 
 ### Related Datasets (repeatable group, optional)
 
-Input data DOIs (Zenodo data records, dataset DOIs, ESA product DOIs).
-
-- _Dataset URL 1: ___
-- _Dataset URL 2: ___
+- https://ladsweb.modaps.eosdis.nasa.gov/missions-and-measurements/products/VNP46A4/
+- https://www.eea.europa.eu/en/datahub/datahubitem-view/6fc8ad2d-195d-40f4-bdec-576e7d1268e4
 
 ### Related Publications (repeatable group, optional)
 
-One-way back-links to the FORRT Outcome URI(s) the software implements, plus any cited methods papers.
-
-- _Publication URL 1 (FORRT Outcome from step 05): ___
-- _Publication URL 2 (methods paper, optional): ___
+- `<paste Outcome URI from PUBLISHED.md step 05 after publishing>` (the FORRT Outcome this software implements)
+- https://doi.org/10.21105/joss.00058 (SEP — the reused source-extraction method)
 
 ## Publication note
 

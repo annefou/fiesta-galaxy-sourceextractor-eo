@@ -1,13 +1,6 @@
-# 01 — PCC Research Question (question-rooted chains, descriptive)
+# 01 — PCC Research Question (question-rooted, descriptive)
 
-> Use this draft instead of `01_quote.md` if your chain is question-rooted and descriptive/scoping (no clear comparator). For comparative question-rooted chains, use `01_pico.md`. See `docs/chain-decision-tree.md`.
->
-> Run the pre-flight checklist in `docs/forrt-form-fields.md` § Pre-flight checklist before drafting.
->
-> **After choosing the chain shape, delete the two step-1 alternates you aren't using.** Once you've decided this chain is question-rooted-descriptive and keep `01_pcc.md`, run:
-> ```bash
-> rm nanopubs/drafts/01_quote.md nanopubs/drafts/01_pico.md
-> ```
+> Chain shape: **question-rooted, descriptive** (no comparator; we characterise light-pollution intrusion). See `docs/chain-decision-tree.md`. The `01_quote.md` and `01_pico.md` alternates have been removed.
 
 **Form heading:** *"PCC Research Question — Define a review question using the PCC framework (Population, Concept, Context)"*
 
@@ -15,50 +8,38 @@
 
 ### Short ID (text input, required)
 
-Slug becomes part of the nanopub URI. Use kebab-case.
-
 ```
-
+light-pollution-po-delta-nightlights
 ```
 
 ### Review Question Label (text input, required)
 
-A short label for searches/discovery.
-
 ```
-
+Artificial-light intrusion on the Po Delta protected area from night lights
 ```
 
 ### Review Question Description (textarea, required)
 
-Describe the review question in detail; commentary on why it matters.
-
 ```
-
+How much artificial light at night intrudes on the Po Delta Natura 2000 protected area, when lit settlements are detected from VIIRS satellite night lights using an astronomy source-extraction tool run in Galaxy? This matters because artificial light at night is a documented stressor for the nocturnal birds, insects and bats that wetland refuges like the Po Delta support, and because it tests whether a tool from one discipline (astronomy) can be reused, unchanged, to answer an Earth-observation / biodiversity question.
 ```
 
 ### Population (textarea, required)
 
-The population or participants being studied.
-
 ```
-
+The Po Delta — a Ramsar and Natura 2000 wetland on the Italian Adriatic coast and a key site for migratory and breeding birds — together with the nocturnal biodiversity it supports.
 ```
 
 ### Concept (textarea, required)
 
-The core concept or phenomenon being examined.
-
 ```
-
+Artificial light at night (light pollution): the presence and spatial extent of artificial light within the protected area, and the proximity of lit human settlements to it.
 ```
 
 ### Context (textarea, required)
 
-The context or setting in which the review is conducted.
-
 ```
-
+VIIRS night-lights radiance (NASA Black Marble) over the eastern Po Valley, analysed with the astronomy Source Extractor tool (SExtractor / SEP) running in Galaxy (usegalaxy.eu), overlaid on the EU Natura 2000 protected-area network.
 ```
 
 ## Publication note

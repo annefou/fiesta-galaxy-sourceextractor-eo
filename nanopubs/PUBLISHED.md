@@ -6,7 +6,7 @@ This file is the canonical registry of published nanopub URIs for this replicati
 
 | Step | Template | URI | Published |
 |---|---|---|---|
-| 01 | Quote-with-comment (or PICO / PCC) | _not yet published_ | |
+| 01 | PCC Research Question | _not yet published_ | |
 | 02 | AIDA Sentence | _not yet published_ | |
 | 03 | FORRT Claim | _not yet published_ | |
 | 04 | FORRT Replication Study | _not yet published_ | |
@@ -17,8 +17,7 @@ This file is the canonical registry of published nanopub URIs for this replicati
 
 | Step | Template | URI | Published |
 |---|---|---|---|
-| 07 | Research Software (if applicable) | _not applicable / not yet published_ | |
-| 08 | Research Synthesis (if applicable) | _not applicable / not yet published_ | |
+| 07 | Research Software (reusable Galaxy night-lights pipeline) | _not yet published_ | |
 
 ## Format
 
