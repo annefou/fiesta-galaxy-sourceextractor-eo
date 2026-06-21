@@ -90,7 +90,7 @@ ext = [bounds.left, bounds.right, bounds.bottom, bounds.top]
 dxmin, dymin, dxmax, dymax = delta.total_bounds
 zext = [dxmin - 0.15, dxmax + 0.15, dymin - 0.12, dymax + 0.12]   # zoom window
 
-fig, (axL, axR) = plt.subplots(1, 2, figsize=(14, 6.4))
+fig, (axL, axR) = plt.subplots(1, 2, figsize=(14, 7.8))
 
 # --- left: regional view, all detected settlements ---
 axL.imshow(np.log1p(rad), cmap="inferno", extent=ext, origin="upper")
@@ -121,9 +121,21 @@ txt = (f"Po Delta (Natura 2000):\n"
 axR.text(0.03, 0.03, txt, transform=axR.transAxes, fontsize=9.5, va="bottom",
          color="white", bbox=dict(boxstyle="round", facecolor="black", alpha=0.65))
 
-fig.suptitle("Light pollution at the edge of a dark refuge — an astronomy tool measures it",
-             fontsize=15, fontweight="bold", y=1.0)
-fig.tight_layout(rect=[0, 0, 1, 0.95])
-fig.savefig(FIGS / "main_result.png", dpi=150, bbox_inches="tight")
+fig.suptitle("Light pollution at the edge of a dark refuge",
+             fontsize=22, fontweight="bold", y=0.99)
+fig.text(0.5, 0.925, "An astronomy source-detection tool, run through Galaxy on satellite "
+         "night lights, catalogs settlements and measures light pressure on the Po Delta",
+         ha="center", fontsize=12, color="#333")
+fig.tight_layout(rect=[0, 0.11, 1, 0.90])
+
+# logos footer: FIESTA · Galaxy · OSCARS
+import matplotlib.image as mpimg
+LOGOS = FIGS / "logos"
+for f, box in [("fiesta.png", [0.07, 0.005, 0.10, 0.105]),
+               ("galaxy.png", [0.43, 0.03, 0.14, 0.06]),
+               ("oscars.png", [0.80, 0.035, 0.14, 0.05])]:
+    la = fig.add_axes(box); la.imshow(mpimg.imread(LOGOS / f)); la.axis("off")
+
+fig.savefig(FIGS / "main_result.png", dpi=150, facecolor="white", bbox_inches="tight")
 plt.show()
 print("wrote figures/main_result.png")
