@@ -83,19 +83,47 @@ for k, v in metrics.items():
 # ## Headline figure
 
 # %%
-fig, ax = plt.subplots(figsize=(9, 6.6))
+# distinct, colorblind-aware colors: settlements = cyan dots (black-edged),
+# Natura 2000 = green, Po Delta = bold yellow.
+C_SET, C_N2K, C_DELTA = "#00ffff", "#00ff7f", "#ffe400"
 ext = [bounds.left, bounds.right, bounds.bottom, bounds.top]
-ax.imshow(np.log1p(rad), cmap="inferno", extent=ext, origin="upper")
-g.boundary.plot(ax=ax, edgecolor="#39c5bb", linewidth=0.5, alpha=0.7)
-delta.boundary.plot(ax=ax, edgecolor="#ffe400", linewidth=1.8)
-ax.scatter(lon, lat, s=4, c="#39c5bb", alpha=0.6, linewidths=0,
-           label=f"{len(cat)} settlements (Source Extractor)")
-ax.set_xlim(ext[0], ext[1]); ax.set_ylim(ext[2], ext[3])
-ax.set_xlabel("lon"); ax.set_ylabel("lat")
-ax.set_title("Light pollution at the edge of a dark refuge\n"
-             "astronomy Source Extractor on VIIRS night lights + Natura 2000 (Po Delta, yellow)")
-ax.legend(loc="lower left", fontsize=8, framealpha=0.6)
-fig.tight_layout()
+dxmin, dymin, dxmax, dymax = delta.total_bounds
+zext = [dxmin - 0.15, dxmax + 0.15, dymin - 0.12, dymax + 0.12]   # zoom window
+
+fig, (axL, axR) = plt.subplots(1, 2, figsize=(14, 6.4))
+
+# --- left: regional view, all detected settlements ---
+axL.imshow(np.log1p(rad), cmap="inferno", extent=ext, origin="upper")
+g.boundary.plot(ax=axL, edgecolor=C_N2K, linewidth=1.1, alpha=0.9)
+delta.boundary.plot(ax=axL, edgecolor=C_DELTA, linewidth=2.5)
+axL.scatter(lon, lat, s=20, facecolor=C_SET, edgecolor="black", linewidths=0.3,
+            label=f"{len(cat)} detected settlements")
+axL.add_patch(plt.Rectangle((zext[0], zext[2]), zext[1] - zext[0], zext[3] - zext[2],
+                            fill=False, edgecolor="white", linewidth=1.0, linestyle="--"))
+axL.set_xlim(ext[0], ext[1]); axL.set_ylim(ext[2], ext[3])
+axL.set_xlabel("longitude"); axL.set_ylabel("latitude")
+axL.set_title("Po Valley night lights → settlements\n"
+              "cyan = settlements · green = Natura 2000 · yellow = Po Delta", fontsize=11)
+axL.legend(loc="lower left", fontsize=9, framealpha=0.75)
+
+# --- right: zoom on the Po Delta refuge, with the metrics ---
+axR.imshow(np.log1p(rad), cmap="inferno", extent=ext, origin="upper")
+delta.boundary.plot(ax=axR, edgecolor=C_DELTA, linewidth=2.8)
+sel = (lon > zext[0]) & (lon < zext[1]) & (lat > zext[2]) & (lat < zext[3])
+axR.scatter(lon[sel], lat[sel], s=42, facecolor=C_SET, edgecolor="black", linewidths=0.5)
+axR.set_xlim(zext[0], zext[1]); axR.set_ylim(zext[2], zext[3])
+axR.set_xlabel("longitude"); axR.set_ylabel("latitude")
+axR.set_title("Zoom: the Po Delta refuge (yellow)", fontsize=11)
+txt = (f"Po Delta (Natura 2000):\n"
+       f"• {metrics['po_delta_pct_lit']}% of its area already lit\n"
+       f"• {metrics['settlements_within_10km_of_delta']} settlements within ~10 km\n"
+       f"• mean light {metrics['po_delta_mean_radiance']} vs {metrics['region_mean_radiance']} region-wide")
+axR.text(0.03, 0.03, txt, transform=axR.transAxes, fontsize=9.5, va="bottom",
+         color="white", bbox=dict(boxstyle="round", facecolor="black", alpha=0.65))
+
+fig.suptitle("Light pollution at the edge of a dark refuge — an astronomy tool measures it",
+             fontsize=15, fontweight="bold", y=1.0)
+fig.tight_layout(rect=[0, 0, 1, 0.95])
 fig.savefig(FIGS / "main_result.png", dpi=150, bbox_inches="tight")
 plt.show()
 print("wrote figures/main_result.png")
