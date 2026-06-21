@@ -8,8 +8,8 @@
   "dateModified": "2026-06-21",
   "license": "https://spdx.org/licenses/MIT",
   "codeRepository": "https://github.com/annefou/fiesta-galaxy-sourceextractor-eo",
-  "identifier": "{{ZENODO_DOI}}",
-  "@id": "{{ZENODO_DOI}}",
+  "identifier": "https://doi.org/10.5281/zenodo.20784962",
+  "@id": "https://doi.org/10.5281/zenodo.20784962",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "Python",

@@ -4,7 +4,7 @@
 [![Jupyter Book](https://github.com/annefou/fiesta-galaxy-sourceextractor-eo/actions/workflows/jupyter-book.yml/badge.svg)](https://annefou.github.io/fiesta-galaxy-sourceextractor-eo/)
 [![Docker](https://github.com/annefou/fiesta-galaxy-sourceextractor-eo/actions/workflows/docker.yml/badge.svg)](https://github.com/annefou/fiesta-galaxy-sourceextractor-eo/pkgs/container/fiesta-galaxy-sourceextractor-eo)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![DOI](https://zenodo.org/badge/DOI/{{ZENODO_DOI}}.svg)]({{ZENODO_DOI}})
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20784962.svg)](https://doi.org/10.5281/zenodo.20784962)
 [![FAIR4RS](https://img.shields.io/badge/FAIR4RS-conformant-brightgreen)](docs/fair4rs-checklist.md)
 [![FORRT](https://img.shields.io/badge/FORRT-replication-blue)](https://forrt.org/)
 [![Science Live](https://img.shields.io/badge/Science%20Live-nanopub%20chain-purple)](nanopubs/PUBLISHED.md)
