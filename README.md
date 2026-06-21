@@ -114,8 +114,7 @@ This work's FORRT chain is **published** on [platform.sciencelive4all.org](https
 | Replication Study | [RAyA6pt4…](https://w3id.org/sciencelive/np/RAyA6pt4EhMD7hZBXAwLJtBjsLYaYZQsoafauxS5BXjWw) |
 | Replication Outcome | [RA7zowzp…](https://w3id.org/sciencelive/np/RA7zowzpxWmmoRaFkRtc6xLUf395EYHMi0QwYAuQKtBAw) |
 | CiTO Citation | [RAHqfGVv…](https://w3id.org/sciencelive/np/RAHqfGVvNBhwPzjKGWjr1GS-63nziwc1Jqt0cm9EEMgJE) |
-
-The Research Software nanopub (`nanopubs/drafts/07_research_software.md`) is pending publication.
+| Research Software | [RA7KdUpn…](https://w3id.org/sciencelive/np/RA7KdUpnRo8yQAOS1ne3L06a6jVNZvRMRX2YIHpSlm5JY) |
 
 Optional further layers:
 

@@ -44,8 +44,7 @@ The FORRT chain for this work is **published** on the Science Live platform (ful
 4. **Replication Study** — [RAyA6pt4…](https://w3id.org/sciencelive/np/RAyA6pt4EhMD7hZBXAwLJtBjsLYaYZQsoafauxS5BXjWw)
 5. **Replication Outcome** — [RA7zowzp…](https://w3id.org/sciencelive/np/RA7zowzpxWmmoRaFkRtc6xLUf395EYHMi0QwYAuQKtBAw)
 6. **CiTO Citation** — [RAHqfGVv…](https://w3id.org/sciencelive/np/RAHqfGVvNBhwPzjKGWjr1GS-63nziwc1Jqt0cm9EEMgJE)
-
-*(Research Software nanopub: pending publication.)*
+7. **Research Software** — [RA7KdUpn…](https://w3id.org/sciencelive/np/RA7KdUpnRo8yQAOS1ne3L06a6jVNZvRMRX2YIHpSlm5JY)
 
 ## Citation
 

@@ -17,7 +17,7 @@ This file is the canonical registry of published nanopub URIs for this replicati
 
 | Step | Template | URI | Published |
 |---|---|---|---|
-| 07 | Research Software (reusable Galaxy night-lights pipeline) | _not yet published_ | |
+| 07 | Research Software (reusable Galaxy night-lights pipeline) | https://w3id.org/sciencelive/np/RA7KdUpnRo8yQAOS1ne3L06a6jVNZvRMRX2YIHpSlm5JY | ✅ 2026-06-21 |
 
 ## Format
 
