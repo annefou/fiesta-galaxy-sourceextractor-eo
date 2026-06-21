@@ -1,0 +1,11 @@
+{
+  "engine": "galaxy:usegalaxy.eu",
+  "tool": "toolshed.g2.bx.psu.edu/repos/astroteam/source_extractor_astro_tool/source_extractor_astro_tool/0.0.1+galaxy0",
+  "history_id": "11ac94870d0bb33a6db507813d50dd67",
+  "public_history_url": "TODO: make the history public on usegalaxy.eu and paste the /u/<user>/h/<slug> URL here",
+  "input": "NASA Black Marble VNP46A4 (VIIRS) annual night lights, 2021, tile h19v04, Po Delta / E. Po Valley",
+  "parameters": {"thresh": 1.5, "err_option": "float_globalrms", "minarea": 5,
+                 "deblend_nthresh": 32, "deblend_cont": 0.005, "bw": 64, "bh": 64, "fw": 3, "fh": 3},
+  "n_settlements": 453,
+  "total_flux": 903143.34
+}
