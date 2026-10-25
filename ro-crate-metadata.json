@@ -1,139 +1,368 @@
 {
-  "@context": "https://w3id.org/ro/crate/1.2/context",
-  "@graph": [
-    {
-      "@type": "CreativeWork",
-      "@id": "ro-crate-metadata.json",
-      "conformsTo": [
-        { "@id": "https://w3id.org/ro/crate/1.2" },
-        { "@id": "https://w3id.org/ro/wfrun/process/0.5" },
-        { "@id": "https://w3id.org/workflowhub/workflow-ro-crate/1.0" }
-      ],
-      "about": { "@id": "./" }
-    },
-    {
-      "@id": "./",
-      "@type": ["Dataset", "ResearchObject"],
-      "name": "fiesta-galaxy-sourceextractor-eo",
-      "description": "Cross-discipline demonstration: an astronomy source-extraction tool (SExtractor/SEP) run through Galaxy on satellite night-lights to catalog settlements and quantify light-pollution pressure on Natura 2000 biodiversity refuges (OSCARS-FIESTA).",
-      "datePublished": "2026-06-21",
-      "license": { "@id": "https://spdx.org/licenses/MIT" },
-      "publisher": { "@id": "https://orcid.org/0000-0002-1784-2920" },
-      "author": [{ "@id": "https://orcid.org/0000-0002-1784-2920" }],
-      "mainEntity": { "@id": "Snakefile" },
-      "hasPart": [
-        { "@id": "Snakefile" },
-        { "@id": "pixi.toml" },
-        { "@id": "pixi.lock" },
-        { "@id": "Dockerfile" },
-        { "@id": "notebooks/01_data_download.py" },
-        { "@id": "notebooks/02_data_clean.py" },
-        { "@id": "notebooks/03_analysis.py" },
-        { "@id": "notebooks/04_figures.py" },
-        { "@id": "paper/" },
-        { "@id": "data/" },
-        { "@id": "results/" },
-        { "@id": "figures/" },
-        { "@id": "nanopubs/PUBLISHED.md" }
-      ],
-      "citation": [
-        { "@id": "https://doi.org/10.21105/joss.00058" }
-      ]
-    },
-    {
-      "@id": "https://orcid.org/0000-0002-1784-2920",
-      "@type": "Person",
-      "name": "Anne Fouilloux",
-      "affiliation": "Lifewatch ERIC"
-    },
-    {
-      "@id": "Snakefile",
-      "@type": ["File", "SoftwareSourceCode", "ComputationalWorkflow"],
-      "name": "Replication pipeline",
-      "description": "Snakemake workflow orchestrating data download, cleaning, analysis, and figure generation.",
-      "programmingLanguage": { "@id": "https://w3id.org/workflowhub/workflow-ro-crate#snakemake" },
-      "input": [{ "@id": "paper/" }, { "@id": "pixi.toml" }, { "@id": "pixi.lock" }],
-      "output": [{ "@id": "results/" }, { "@id": "figures/" }, { "@id": "nanopubs/PUBLISHED.md" }]
-    },
-    {
-      "@id": "https://w3id.org/workflowhub/workflow-ro-crate#snakemake",
-      "@type": "ComputerLanguage",
-      "name": "Snakemake",
-      "url": "https://snakemake.readthedocs.io/"
-    },
-    {
-      "@id": "pixi.toml",
-      "@type": ["File", "ConfigurationFile"],
-      "name": "Pixi workspace manifest (declared dependencies, features, tasks)",
-      "encodingFormat": "application/toml"
-    },
-    {
-      "@id": "pixi.lock",
-      "@type": ["File", "ConfigurationFile"],
-      "name": "Pixi per-platform lockfile (every package pinned to an exact build hash)",
-      "encodingFormat": "application/yaml"
-    },
-    {
-      "@id": "Dockerfile",
-      "@type": ["File", "ConfigurationFile"],
-      "name": "Container build specification",
-      "encodingFormat": "text/x-dockerfile"
-    },
-    {
-      "@id": "notebooks/01_data_download.py",
-      "@type": ["File", "SoftwareSourceCode", "Notebook"],
-      "name": "01 — Data download",
-      "programmingLanguage": "Python"
-    },
-    {
-      "@id": "notebooks/02_data_clean.py",
-      "@type": ["File", "SoftwareSourceCode", "Notebook"],
-      "name": "02 — Data clean",
-      "programmingLanguage": "Python"
-    },
-    {
-      "@id": "notebooks/03_analysis.py",
-      "@type": ["File", "SoftwareSourceCode", "Notebook"],
-      "name": "03 — Analysis",
-      "programmingLanguage": "Python"
-    },
-    {
-      "@id": "notebooks/04_figures.py",
-      "@type": ["File", "SoftwareSourceCode", "Notebook"],
-      "name": "04 — Figures",
-      "programmingLanguage": "Python"
-    },
-    {
-      "@id": "paper/",
-      "@type": "Dataset",
-      "name": "Source paper PDF (drop yours here)"
-    },
-    {
-      "@id": "data/",
-      "@type": "Dataset",
-      "name": "Downloaded input data (gitignored; populated by 01_data_download.py)"
-    },
-    {
-      "@id": "results/",
-      "@type": "Dataset",
-      "name": "Analysis output artefacts"
-    },
-    {
-      "@id": "figures/",
-      "@type": "Dataset",
-      "name": "Curated figures used in the Jupyter Book"
-    },
-    {
-      "@id": "nanopubs/PUBLISHED.md",
-      "@type": ["File", "TextObject"],
-      "name": "Registry of published FORRT nanopub URIs",
-      "description": "URIs of the published Quote / AIDA / FORRT Claim / Replication Study / Replication Outcome / CiTO Citation steps."
-    },
-    {
-      "@id": "https://doi.org/10.21105/joss.00058",
-      "@type": "ScholarlyArticle",
-      "name": "SEP: Source Extraction and Photometry",
-      "datePublished": "2016"
-    }
-  ]
+    "@context": "https://w3id.org/ro/crate/1.2/context",
+    "@graph": [
+        {
+            "@id": "./",
+            "@type": "Dataset",
+            "author": {
+                "@id": "https://orcid.org/0000-0002-1784-2920"
+            },
+            "citation": [
+                {
+                    "@id": "https://doi.org/10.21105/joss.00058"
+                },
+                {
+                    "@id": "https://toolshed.g2.bx.psu.edu/repos/astroteam/source_extractor_astro_tool"
+                }
+            ],
+            "codeRepository": "https://github.com/annefou/fiesta-galaxy-sourceextractor-eo",
+            "conformsTo": [
+                {
+                    "@id": "https://w3id.org/np/RAQXwdUrfZ40k2MdeDv9fokzyh35UKuN3w17G2yO4Wm8A"
+                }
+            ],
+            "contentLocation": {
+                "@id": "#study-area"
+            },
+            "datePublished": "2026-06-21",
+            "description": "Cross-discipline demonstration: an astronomy source-extraction tool (SExtractor/SEP) run through Galaxy on satellite night-lights to catalog settlements and quantify light-pollution pressure on Natura 2000 biodiversity refuges (OSCARS-FIESTA).",
+            "funder": {
+                "@id": "https://ror.org/00k4n6c32"
+            },
+            "funding": {
+                "@id": "https://cordis.europa.eu/project/id/101129751"
+            },
+            "hasPart": [
+                {
+                    "@id": "Snakefile"
+                },
+                {
+                    "@id": "notebooks/01_data_download.py"
+                },
+                {
+                    "@id": "notebooks/02_data_clean.py"
+                },
+                {
+                    "@id": "notebooks/03_analysis.py"
+                },
+                {
+                    "@id": "notebooks/04_figures.py"
+                },
+                {
+                    "@id": "pixi.toml"
+                },
+                {
+                    "@id": "Dockerfile"
+                },
+                {
+                    "@id": "results/galaxy_provenance.json"
+                },
+                {
+                    "@id": "figures/main_result.png"
+                },
+                {
+                    "@id": "https://ladsweb.modaps.eosdis.nasa.gov/missions-and-measurements/products/VNP46A4/"
+                },
+                {
+                    "@id": "https://www.eea.europa.eu/en/datahub/datahubitem-view/6fc8ad2d-195d-40f4-bdec-576e7d1268e4"
+                },
+                {
+                    "@id": "https://doi.org/10.5281/zenodo.20784962"
+                }
+            ],
+            "identifier": {
+                "@id": "#version-doi"
+            },
+            "keywords": [
+                "replication",
+                "reproducibility",
+                "FORRT",
+                "nanopublication",
+                "Science-Live"
+            ],
+            "license": {
+                "@id": "https://spdx.org/licenses/MIT"
+            },
+            "mainEntity": {
+                "@id": "Snakefile"
+            },
+            "name": "An astronomy source-detection tool applied to Earth observation: Source Extractor catalogs settlements in night lights (OSCARS-FIESTA)",
+            "publisher": {
+                "@id": "https://ror.org/02a8eka68"
+            },
+            "sameAs": {
+                "@id": "https://doi.org/10.5281/zenodo.20784962"
+            },
+            "subjectOf": [
+                {
+                    "@id": "https://w3id.org/sciencelive/np/RAEDNajh8Hz_fZbBRgOACKDxWrQYFfDYRks8-xxMEfKt4"
+                },
+                {
+                    "@id": "https://w3id.org/sciencelive/np/RAzhINAbh6Mdx4UojSiL1Wa4DHWf1RGiOeHXmOwVQLwhw"
+                },
+                {
+                    "@id": "https://w3id.org/sciencelive/np/RA2fQHXqmUHhYm46lrCjeXBQbX-h5uFBWo479kkgG5yO8"
+                },
+                {
+                    "@id": "https://w3id.org/sciencelive/np/RAyA6pt4EhMD7hZBXAwLJtBjsLYaYZQsoafauxS5BXjWw"
+                },
+                {
+                    "@id": "https://w3id.org/sciencelive/np/RA7zowzpxWmmoRaFkRtc6xLUf395EYHMi0QwYAuQKtBAw"
+                },
+                {
+                    "@id": "https://w3id.org/sciencelive/np/RAHqfGVvNBhwPzjKGWjr1GS-63nziwc1Jqt0cm9EEMgJE"
+                }
+            ],
+            "version": "0.1.0"
+        },
+        {
+            "@id": "ro-crate-metadata.json",
+            "@type": "CreativeWork",
+            "about": {
+                "@id": "./"
+            },
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.2"
+            }
+        },
+        {
+            "@id": "https://w3id.org/workflowhub/workflow-ro-crate#snakemake",
+            "@type": "ComputerLanguage",
+            "name": "Snakemake",
+            "url": {
+                "@id": "https://snakemake.readthedocs.io/"
+            },
+            "version": "9.21.0"
+        },
+        {
+            "@id": "Snakefile",
+            "@type": [
+                "File",
+                "SoftwareSourceCode",
+                "ComputationalWorkflow"
+            ],
+            "contentSize": "1864",
+            "description": "Replication pipeline (Snakemake): download, clean, analyse, figures.",
+            "encodingFormat": "text/x-snakemake",
+            "name": "Snakefile",
+            "programmingLanguage": {
+                "@id": "https://w3id.org/workflowhub/workflow-ro-crate#snakemake"
+            }
+        },
+        {
+            "@id": "notebooks/01_data_download.py",
+            "@type": "File",
+            "contentSize": "4549",
+            "description": "Notebook 01_data_download (jupytext)",
+            "encodingFormat": "text/x-python",
+            "name": "notebooks/01_data_download.py"
+        },
+        {
+            "@id": "notebooks/02_data_clean.py",
+            "@type": "File",
+            "contentSize": "1304",
+            "description": "Notebook 02_data_clean (jupytext)",
+            "encodingFormat": "text/x-python",
+            "name": "notebooks/02_data_clean.py"
+        },
+        {
+            "@id": "notebooks/03_analysis.py",
+            "@type": "File",
+            "contentSize": "2599",
+            "description": "Notebook 03_analysis (jupytext)",
+            "encodingFormat": "text/x-python",
+            "name": "notebooks/03_analysis.py"
+        },
+        {
+            "@id": "notebooks/04_figures.py",
+            "@type": "File",
+            "contentSize": "8505",
+            "description": "Notebook 04_figures (jupytext)",
+            "encodingFormat": "text/x-python",
+            "name": "notebooks/04_figures.py"
+        },
+        {
+            "@id": "pixi.toml",
+            "@type": "File",
+            "contentSize": "2021",
+            "description": "Pixi manifest: declared dependencies",
+            "encodingFormat": "application/toml",
+            "name": "pixi.toml"
+        },
+        {
+            "@id": "Dockerfile",
+            "@type": "File",
+            "contentSize": "747",
+            "description": "Container build specification",
+            "encodingFormat": "text/plain",
+            "name": "Dockerfile"
+        },
+        {
+            "@id": "results/galaxy_provenance.json",
+            "@type": "File",
+            "contentSize": "671",
+            "description": "Result galaxy_provenance",
+            "encodingFormat": "application/json",
+            "name": "results/galaxy_provenance.json"
+        },
+        {
+            "@id": "figures/main_result.png",
+            "@type": "File",
+            "contentSize": "1755475",
+            "description": "Main figure",
+            "encodingFormat": "image/png",
+            "name": "figures/main_result.png"
+        },
+        {
+            "@id": "https://ladsweb.modaps.eosdis.nasa.gov/missions-and-measurements/products/VNP46A4/",
+            "@type": "File",
+            "description": "NASA Black Marble VNP46A4 annual night lights (VIIRS), 2021",
+            "encodingFormat": "text/html",
+            "name": "NASA Black Marble VNP46A4 annual night lights (VIIRS), 2021",
+            "sdDatePublished": "2026-10-24"
+        },
+        {
+            "@id": "https://www.eea.europa.eu/en/datahub/datahubitem-view/6fc8ad2d-195d-40f4-bdec-576e7d1268e4",
+            "@type": "File",
+            "description": "Natura 2000 sites (EEA)",
+            "encodingFormat": "text/html",
+            "name": "Natura 2000 sites (EEA)",
+            "sdDatePublished": "2026-10-24"
+        },
+        {
+            "@id": "https://ror.org/02a8eka68",
+            "@type": "Organization",
+            "name": "LifeWatch ERIC",
+            "url": "https://www.lifewatch.eu/"
+        },
+        {
+            "@id": "https://orcid.org/0000-0002-1784-2920",
+            "@type": "Person",
+            "affiliation": "Lifewatch ERIC",
+            "name": "Anne Fouilloux"
+        },
+        {
+            "@id": "https://ror.org/00k4n6c32",
+            "@type": "Organization",
+            "name": "European Commission",
+            "url": "https://commission.europa.eu/"
+        },
+        {
+            "@id": "https://cordis.europa.eu/project/id/101129751",
+            "@type": "Grant",
+            "funder": {
+                "@id": "https://ror.org/00k4n6c32"
+            },
+            "identifier": "101129751",
+            "name": "OSCARS: Open Science Clusters' Action for Research and Society"
+        },
+        {
+            "@id": "https://spdx.org/licenses/MIT",
+            "@type": "CreativeWork",
+            "description": "MIT licence for the code.",
+            "name": "MIT License"
+        },
+        {
+            "@id": "https://w3id.org/np/RAQXwdUrfZ40k2MdeDv9fokzyh35UKuN3w17G2yO4Wm8A",
+            "@type": [
+                "CreativeWork",
+                "Profile"
+            ],
+            "description": "The FAIR Enabling Resources the Earth-observation community of OSCARS-FIESTA agreed to use.",
+            "name": "FAIR Implementation Profile: Earth Observation (OSCARS-FIESTA), v1.0.2"
+        },
+        {
+            "@id": "#study-area",
+            "@type": "Place",
+            "geo": {
+                "@id": "#study-area-box"
+            },
+            "name": "Po Valley and Po Delta, Italy"
+        },
+        {
+            "@id": "#study-area-box",
+            "@type": "GeoShape",
+            "box": "44.3 10.5 46.0 13.3",
+            "name": "Bounding box of Po Valley and Po Delta, Italy"
+        },
+        {
+            "@id": "#version-doi",
+            "@type": "PropertyValue",
+            "name": "Version DOI",
+            "propertyID": "https://registry.identifiers.org/registry/doi",
+            "url": "https://doi.org/10.5281/zenodo.20784962",
+            "value": "10.5281/zenodo.20784962"
+        },
+        {
+            "@id": "https://doi.org/10.5281/zenodo.20784962",
+            "@type": "CreativeWork",
+            "description": "Archived release: full source tree, results and figures.",
+            "license": {
+                "@id": "https://spdx.org/licenses/MIT"
+            },
+            "name": "Release v0.1.0 (Zenodo version DOI)"
+        },
+        {
+            "@id": "https://w3id.org/sciencelive/np/RAEDNajh8Hz_fZbBRgOACKDxWrQYFfDYRks8-xxMEfKt4",
+            "@type": "CreativeWork",
+            "additionalType": "Nanopublication",
+            "encodingFormat": "application/trig",
+            "name": "PCC Research Question (FORRT chain step 01)"
+        },
+        {
+            "@id": "https://w3id.org/sciencelive/np/RAzhINAbh6Mdx4UojSiL1Wa4DHWf1RGiOeHXmOwVQLwhw",
+            "@type": "CreativeWork",
+            "additionalType": "Nanopublication",
+            "encodingFormat": "application/trig",
+            "name": "AIDA Sentence (FORRT chain step 02)"
+        },
+        {
+            "@id": "https://w3id.org/sciencelive/np/RA2fQHXqmUHhYm46lrCjeXBQbX-h5uFBWo479kkgG5yO8",
+            "@type": "CreativeWork",
+            "additionalType": "Nanopublication",
+            "encodingFormat": "application/trig",
+            "name": "FORRT Claim (FORRT chain step 03)"
+        },
+        {
+            "@id": "https://w3id.org/sciencelive/np/RAyA6pt4EhMD7hZBXAwLJtBjsLYaYZQsoafauxS5BXjWw",
+            "@type": "CreativeWork",
+            "additionalType": "Nanopublication",
+            "encodingFormat": "application/trig",
+            "name": "FORRT Replication Study (FORRT chain step 04)"
+        },
+        {
+            "@id": "https://w3id.org/sciencelive/np/RA7zowzpxWmmoRaFkRtc6xLUf395EYHMi0QwYAuQKtBAw",
+            "@type": "CreativeWork",
+            "additionalType": "Nanopublication",
+            "encodingFormat": "application/trig",
+            "name": "FORRT Replication Outcome (FORRT chain step 05)"
+        },
+        {
+            "@id": "https://w3id.org/sciencelive/np/RAHqfGVvNBhwPzjKGWjr1GS-63nziwc1Jqt0cm9EEMgJE",
+            "@type": "CreativeWork",
+            "additionalType": "Nanopublication",
+            "encodingFormat": "application/trig",
+            "name": "CiTO Citation (FORRT chain step 06)"
+        },
+        {
+            "@id": "https://doi.org/10.21105/joss.00058",
+            "@type": "ScholarlyArticle",
+            "name": "Barbary 2016, SEP: Source Extractor as a library"
+        },
+        {
+            "@id": "https://toolshed.g2.bx.psu.edu/repos/astroteam/source_extractor_astro_tool",
+            "@type": "CreativeWork",
+            "name": "Source Extractor Galaxy tool (astroteam)"
+        },
+        {
+            "@id": "https://w3id.org/ro/crate/1.2",
+            "@type": "CreativeWork",
+            "name": "https://w3id.org/ro/crate/1.2"
+        },
+        {
+            "@id": "https://snakemake.readthedocs.io/",
+            "@type": "CreativeWork",
+            "name": "Snakemake documentation"
+        }
+    ]
 }
